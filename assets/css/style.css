@@ -17,3 +17,11 @@ main {
 nav, main, footer {
     flex-shrink: 0;
 }
+
+.delete, .edit {
+    float: right;
+}
+
+.delete {
+    color: red;
+}
