@@ -29,6 +29,13 @@ Compile and build
 $ npm run build
 ```
 
+### API
+Run a fake api for development
+
+```sh
+$ npm run json:server
+```
+
 ## More Info
 
 ### Author
