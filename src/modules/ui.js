@@ -1,18 +1,15 @@
+import { constants } from './constants';
+
 class UI {
-    constructor() {
-        this.post = document.querySelector('#posts');
-        this.titleInput = document.querySelector('#title');
-        this.bodyInput = document.querySelector('#body');
-        this.idInput = document.querySelector('#id');
-        this.postSubmit = document.querySelector('.post-submit');
-        this.forState = 'add';
-    }
+	constructor() {
+		this.forState = 'add';
+	}
 
-    showPosts(posts) {
-        let output = '';
+	showPosts(posts) {
+		let output = '';
 
-        posts.forEach(post => {
-            output += `
+		posts.forEach(post => {
+			output += `
                 <div class="card mb-3">
                     <div class="card-body">
                     <a href="#" class="delete card-link" data-id="${post.id}">
@@ -26,10 +23,45 @@ class UI {
                     </div>
                 </div>
             `;
-        });
+		});
 
-        this.post.innerHTML = output;
-    }
+		constants.DOMSelectors().post.innerHTML = output;
+	}
+
+	showAlert(message, className) {
+		this.clearAlert();
+
+		// Create div
+		const div = document.createElement('div');
+		// Add classes
+		div.className = className;
+		// Add text
+		div.appendChild(document.createTextNode(message));
+		// Get parent
+		const container = constants.DOMSelectors().postForm;
+		// Get posts
+		const card = constants.DOMSelectors().cardForm;
+		// Insert alert div
+		container.insertBefore(div, card);
+
+		// Timeout
+		setTimeout(() => {
+			this.clearAlert();
+		}, 3000);
+	}
+
+	clearAlert() {
+		const currentAlert = constants.DOMSelectors().alert;
+
+		if (currentAlert) {
+			currentAlert.remove();
+		}
+	}
+
+	clearFields() {
+		constants.DOMSelectors().titleInput.value = '';
+		constants.DOMSelectors().bodyInput.value = '';
+	}
 }
 
 export const ui = new UI();
