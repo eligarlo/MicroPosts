@@ -14,7 +14,9 @@ class Constants {
 			titleInput: document.querySelector('#title'),
 			bodyInput: document.querySelector('#body'),
 			idInput: document.querySelector('#id'),
-			postSubmit: document.querySelector('.post-submit')
+			postSubmit: document.querySelector('.post-submit'),
+			postCancel: document.querySelector('.post-cancel'),
+			formEnd: document.querySelector('.form-end')
 		}
 	}
 }
